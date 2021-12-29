@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.reactnativeandroidautoexample">
+  package="com.reactnativeandroidautoexample" 
+  xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -21,5 +22,20 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+      <meta-data
+        android:name="com.google.android.gms.car.application"
+        android:resource="@xml/automotive_app_desc" />
+
+      <meta-data android:name="androidx.car.app.minCarApiLevel"
+        android:value="1"
+        tools:ignore="MetadataTagInsideApplicationTag" />
+
+      <service
+          android:name="com.shopify.rnandroidauto.CarService"
+          android:exported="true">
+          <intent-filter>
+          <action android:name="androidx.car.app.CarAppService" />
+          </intent-filter>
+      </service>
     </application>
 </manifest>
