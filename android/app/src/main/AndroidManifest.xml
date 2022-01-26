@@ -32,17 +32,34 @@
         android:name="com.google.android.gms.car.application"
         android:resource="@xml/automotive_app_desc" />
 
-      <meta-data android:name="androidx.car.app.minCarApiLevel"
-        android:value="1"
-        tools:ignore="MetadataTagInsideApplicationTag" />
+<!--      <service-->
+<!--          android:name="com.shopify.rnandroidauto.CarService"-->
+<!--          android:exported="true">-->
+<!--          <intent-filter>-->
+<!--          <action android:name="androidx.car.app.CarAppService" />-->
+<!--          <category android:name="androidx.car.app.category.NAVIGATION"/>-->
+<!--          </intent-filter>-->
+<!--      </service>-->
 
-      <service
-          android:name="com.shopify.rnandroidauto.CarService"
-          android:exported="true">
-          <intent-filter>
-          <action android:name="androidx.car.app.CarAppService" />
-          <category android:name="androidx.car.app.category.NAVIGATION"/>
-          </intent-filter>
-      </service>
+        <service
+            android:name="com.mapbox.examples.androidauto.MainCarAppService"
+            android:exported="true"
+            android:foregroundServiceType="location">
+
+            <intent-filter>
+                <action android:name="androidx.car.app.CarAppService" />
+                <category android:name="androidx.car.app.category.NAVIGATION" />
+            </intent-filter>
+
+        </service>
+
+<!--        <meta-data-->
+<!--            android:name="androidx.car.app.theme"-->
+<!--            android:resource="@style/CarAppTheme"/>-->
+
+        <meta-data
+            android:name="androidx.car.app.minCarApiLevel"
+            android:value="1" />
+
     </application>
 </manifest>
