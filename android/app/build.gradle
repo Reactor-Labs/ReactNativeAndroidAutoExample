@@ -1,4 +1,6 @@
 apply plugin: "com.android.application"
+apply plugin: 'kotlin-android'
+//apply plugin: 'kotlin-android-extensions'
 
 import com.android.build.OutputFile
 
@@ -186,12 +188,17 @@ android {
 
         }
     }
+
+    packagingOptions {
+        pickFirst '**/*.so'
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0"
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
