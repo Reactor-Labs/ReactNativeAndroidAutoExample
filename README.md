@@ -18,16 +18,6 @@ Add the following res file to your app. Remember to replace YOUR_ACCESS_TOKEN_HE
 </resources>
 ```
 
-Create a `app/src/main/res/xml/automotive_app_desc.xml` file:
-
-```
-<?xml version="1.0" encoding="utf-8"?>
-
-<automotiveApp>
-  <uses name="template" />
-</automotiveApp>
-```
-
 Add your secret token your gradle.properties file:
 
 If you dont have one create it:
@@ -78,37 +68,6 @@ Also add the required permissions
 
 ```
 
-Add the CarInitializer.kt
-
-```
-package com.reactnativeandroidautoexample
-
-import android.content.Context
-import androidx.lifecycle.Lifecycle
-import com.mapbox.androidauto.MapboxCarInitializer
-import com.mapbox.androidauto.MapboxCarOptions
-import com.mapbox.maps.MapInitOptions
-import com.mapbox.maps.Style
-
-class ExampleCarInitializer : MapboxCarInitializer {
-
-    override fun create(lifecycle: Lifecycle, context: Context): MapboxCarOptions {
-        val mapInitOptions = MapInitOptions(context)
-        return MapboxCarOptions.Builder(mapInitOptions)
-            .mapDayStyle(DAY_STYLE)
-            .mapNightStyle(NIGHT_STYLE)
-            .replayEnabled(ENABLE_REPLAY)
-            .build()
-    }
-
-    companion object {
-        const val ENABLE_REPLAY = true
-        const val DAY_STYLE = Style.TRAFFIC_DAY
-        const val NIGHT_STYLE = Style.TRAFFIC_NIGHT
-    }
-}
-
-```
 
 Check to your project level build.gradle and make sure the following matches the minimum required versions:
 
@@ -225,7 +184,7 @@ public class MainApplication extends Application implements ReactApplication {
         MapboxNavigationApp.INSTANCE.setup(navOptions.build()).attachAllActivities();
         MapboxNavigationApp.INSTANCE.registerObserver(new ReplayNavigationObserver());
 
-        MapboxCarInitializer mapboxCarInitializer = new ExampleCarInitializer();
+        MapboxCarInitializer mapboxCarInitializer = new RNCarInitializer();
         // Setup android auto
         MapboxCarApp.INSTANCE.setup(this, mapboxCarInitializer, new CarAppServicesProviderImpl());
     }
@@ -240,7 +199,7 @@ public class MainApplication extends Application implements ReactApplication {
 
 You will also need the following files
 
-`android/app/src/main/java/com/reactnativeandroidautoexample/ExampleCarInitializer.kt`
+`android/app/src/main/java/com/reactnativeandroidautoexample/RNCarInitializer.kt`
 
 ```
 package com.reactnativeandroidautoexample
@@ -252,7 +211,7 @@ import com.mapbox.androidauto.MapboxCarOptions
 import com.mapbox.maps.MapInitOptions
 import com.mapbox.maps.Style
 
-class ExampleCarInitializer : MapboxCarInitializer {
+class RNCarInitializer : MapboxCarInitializer {
 
     override fun create(lifecycle: Lifecycle, context: Context): MapboxCarOptions {
         val mapInitOptions = MapInitOptions(context)
@@ -287,7 +246,7 @@ class ReplayNavigationObserver : MapboxNavigationObserver {
     private lateinit var replayRoutesObserver: ReplayRoutesObserver
 
     override fun onAttached(mapboxNavigation: MapboxNavigation) {
-        if (ExampleCarInitializer.ENABLE_REPLAY) {
+        if (RNCarInitializer.ENABLE_REPLAY) {
             val mapboxReplayer = mapboxNavigation.mapboxReplayer
             val applicationContext = mapboxNavigation.navigationOptions.applicationContext
             replayProgressObserver = ReplayProgressObserver(mapboxReplayer)
