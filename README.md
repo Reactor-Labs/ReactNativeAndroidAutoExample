@@ -4,6 +4,31 @@ Use this example to create a React Native Android Auto app.
 
 ## Getting Started
 
+Before starting make sure to have a Mapbox access token and a secret download token. These can be retrieved 
+from your Mpabox account page. The secret download token starts with “sk.“, access token starts with “pk.”
+
+Create a `mapbox_access_token.xml` in `app/src/main/res/values`
+
+Add the following res file to your app. Remember to replace YOUR_ACCESS_TOKEN_HERE with your access token.
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="mapbox_access_token">YOUR_ACCESS_TOKEN_HERE</string>
+</resources>
+```
+
+Add your secret token your gradle.properties file:
+
+If you dont have one create it:
+
+```
+$ touch ~/.gradle/gradle.properties
+```
+
+```
+MAPBOX_DOWNLOADS_TOKEN=YOUR_SECRET_MAPBOX_ACCESS_TOKEN
+```
 
 Add the following lines to your app's `AndroidManifest.xml` file under the `<application></application>` tag:
 
