@@ -8,15 +8,6 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
-import com.mapbox.android.core.location.LocationEngine;
-import com.mapbox.android.core.location.LocationEngineProvider;
-import com.mapbox.androidauto.CarAppServicesProviderImpl;
-import com.mapbox.androidauto.MapboxCarApp;
-import com.mapbox.androidauto.MapboxCarInitializer;
-import com.mapbox.navigation.base.options.NavigationOptions;
-import com.mapbox.navigation.lifecycle.MapboxNavigationApp;
-import com.mapbox.search.MapboxSearchSdk;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -49,33 +40,11 @@ public class MainApplication extends Application implements ReactApplication {
     return mReactNativeHost;
   }
 
-  private void initializeSearchSDK() {
-      LocationEngine locationEngine = LocationEngineProvider.getBestLocationEngine(getApplicationContext());
-    MapboxSearchSdk.initialize(
-            this,
-            getString(R.string.mapbox_access_token),
-            locationEngine
-    );
-  }
-
   @Override
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
-
-    initializeSearchSDK();
-
-
-    // Setup MapboxNavigation
-    NavigationOptions.Builder navOptions = new NavigationOptions.Builder(getApplicationContext());
-    navOptions.accessToken(getString(R.string.mapbox_access_token));
-    MapboxNavigationApp.INSTANCE.setup(navOptions.build()).attachAllActivities();
-    MapboxNavigationApp.INSTANCE.registerObserver(new ReplayNavigationObserver());
-
-    MapboxCarInitializer mapboxCarInitializer = new ExampleCarInitializer();
-    // Setup android auto
-    MapboxCarApp.INSTANCE.setup(this, mapboxCarInitializer, new CarAppServicesProviderImpl());
   }
 
   /**

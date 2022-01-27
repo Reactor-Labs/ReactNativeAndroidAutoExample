@@ -12,8 +12,7 @@ import {
 
 const RoutePreview = () => {
   return (
-    <route-preview-navigation-screen
-      title="Route Preview"
+    <navigation-template
       headerAction="back"
       actionStrip={{
         actions: [
@@ -26,19 +25,8 @@ const RoutePreview = () => {
           },
         ],
       }}>
-      <row
-          title="Test Route"
-          texts={['Hello world Route', 'text 2']}
-          key={1}
-          type="place"
-          metadata={{
-            type: 'place',
-            latitude: 47.497913,
-            longitude: 19.040236,
-          }}
-        />
       {/* <View /> */}
-    </route-preview-navigation-screen>
+    </navigation-template>
   );
 };
 
