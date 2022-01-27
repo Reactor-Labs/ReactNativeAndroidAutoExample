@@ -18,6 +18,16 @@ Add the following res file to your app. Remember to replace YOUR_ACCESS_TOKEN_HE
 </resources>
 ```
 
+Create a `app/src/main/res/xml/automotive_app_desc.xml` file:
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+
+<automotiveApp>
+  <uses name="template" />
+</automotiveApp>
+```
+
 Add your secret token your gradle.properties file:
 
 If you dont have one create it:
