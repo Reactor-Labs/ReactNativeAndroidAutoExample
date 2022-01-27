@@ -54,6 +54,18 @@ Add the following lines to your app's `AndroidManifest.xml` file under the `<app
     ...
 ```
 
+Also add the required permissions
+
+```
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+<uses-permission android:name="androidx.car.app.NAVIGATION_TEMPLATES"/>
+<uses-permission android:name="androidx.car.app.MAP_TEMPLATES"/>
+<uses-permission android:name="androidx.car.app.ACCESS_SURFACE"/>
+
+
+```
+
 Add the CarInitializer.kt
 
 ```
