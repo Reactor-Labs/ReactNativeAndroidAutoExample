@@ -59,9 +59,11 @@ Also add the required permissions
 ```
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-<uses-permission android:name="androidx.car.app.NAVIGATION_TEMPLATES"/>
-<uses-permission android:name="androidx.car.app.MAP_TEMPLATES"/>
-<uses-permission android:name="androidx.car.app.ACCESS_SURFACE"/>
+  <!-- For PlaceListMapTemplate -->
+  <uses-permission android:name="androidx.car.app.MAP_TEMPLATES"/>
+  <!-- For NavigationTemplate -->
+  <uses-permission android:name="androidx.car.app.ACCESS_SURFACE"/>
+  <uses-permission android:name="androidx.car.app.NAVIGATION_TEMPLATES"/>
 
 
 ```
