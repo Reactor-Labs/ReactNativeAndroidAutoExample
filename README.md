@@ -34,6 +34,15 @@ Add the following lines to your app's `AndroidManifest.xml` file under the `<app
 
 ```
     ...
+    
+    <meta-data
+      android:name="com.google.android.gms.car.application"
+      android:resource="@xml/automotive_app_desc" />
+
+    <meta-data
+        android:name="androidx.car.app.minCarApiLevel"
+        android:value="1" 
+    />
 
     <service
         android:name="com.mapbox.examples.androidauto.MainCarAppService"
@@ -45,12 +54,6 @@ Add the following lines to your app's `AndroidManifest.xml` file under the `<app
             <category android:name="androidx.car.app.category.NAVIGATION" />
         </intent-filter>
     </service>
-
-    <meta-data
-        android:name="androidx.car.app.minCarApiLevel"
-        android:value="1" 
-    />
-
     ...
 ```
 
