@@ -91,8 +91,10 @@ Add the following to your project level `build.gradle` file:
      }
     ...
 
-    allprojects {
+    buildscript {
+        ...
         repositories {
+            ...
             maven {
                 url 'https://api.mapbox.com/downloads/v2/releases/maven'
                 authentication {
@@ -106,7 +108,25 @@ Add the following to your project level `build.gradle` file:
                     password = project.hasProperty('MAPBOX_DOWNLOADS_TOKEN') ? project.property('MAPBOX_DOWNLOADS_TOKEN') : System.getenv('MAPBOX_DOWNLOADS_TOKEN')
                 }
             }
+            ...
         }
+        ...
+    }
+
+    allprojects {
+        ...
+
+        maven {
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                username = "mapbox"
+                password = project.hasProperty('MAPBOX_DOWNLOADS_TOKEN') ? project.property('MAPBOX_DOWNLOADS_TOKEN') : System.getenv('MAPBOX_DOWNLOADS_TOKEN')
+            }
+        }
+        ...
     }
 
     ...
@@ -121,23 +141,25 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-7.0.2-all.zip
 
 ```
 
-Add the following to your app leve `build.gradle` file:
+Add the following to your app level `build.gradle` file:
 
 ```
-apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
 
 ...
 
 android {
     ...
+
     packagingOptions {
-        pickFirst '**/*.so'
+        pickFirst "**/*.so"
     }
 }
 
 dependencies {
     ...
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0"
+    ...
 }
 
 ```
