@@ -17,10 +17,10 @@ const Events = () => {
           // value previously stored
           setData(JSON.parse(value));
         }
-        console.log(
-          '🚀 ~ file: Events.js ~ line 17 ~ fetchData ~ value',
-          value,
-        );
+//        console.log(
+//          '🚀 ~ file: Events.js ~ line 17 ~ fetchData ~ value',
+//          value,
+//        );
       } catch (e) {
         console.log('🚀 ~ file: index.js ~ line 214 ~ getData ~ e', e);
         // error reading value
@@ -45,7 +45,7 @@ const Events = () => {
     <list-template
       isLoading={isLoading}
       title={'Events'}
-      headerAction="app_icon"
+      headerAction="back"
       actionStrip={{
         actions: [
           {
@@ -58,6 +58,7 @@ const Events = () => {
         ],
       }}>
       {eventsList.map((item, index) => {
+        console.log(item, index)
         const eventDates = filterEventDates(item.agendas);
         return (
           <item-list header={item.name} key={index}>
@@ -66,6 +67,7 @@ const Events = () => {
               title={item.header}
               texts={[eventDates.length > 0 ? eventDates[0].fullDate : '']}
               onPress={() => {
+                console.log('🚀 ~ Events.js - onPress ~ ', item.routeCollections);
                 navigation.push('routes', {
                   routeCollections: item.routeCollections,
                 });
