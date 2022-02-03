@@ -37,7 +37,11 @@ const RoutePreview = ({routeParams}) => {
           type: 'place',
           latitude: routeParams.drivingRoute.latitude,
           longitude: routeParams.drivingRoute.longitude,
-        }}
+        },{
+          type: 'waypoints',
+          waypoints: routeParams.drivingRoute.waypoints,
+        }
+        }
       />
     </route-preview-navigation-screen>
   );

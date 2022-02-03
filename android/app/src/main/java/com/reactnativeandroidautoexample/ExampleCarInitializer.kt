@@ -19,8 +19,8 @@ class ExampleCarInitializer : MapboxCarInitializer {
     }
 
     companion object {
-        const val ENABLE_REPLAY = true
-        const val DAY_STYLE = Style.TRAFFIC_DAY
-        const val NIGHT_STYLE = Style.TRAFFIC_NIGHT
+        const val ENABLE_REPLAY = false
+        const val DAY_STYLE = Style.DARK
+        const val NIGHT_STYLE = Style.DARK
     }
 }

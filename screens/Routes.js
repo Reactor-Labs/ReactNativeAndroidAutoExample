@@ -22,7 +22,7 @@ const Routes = ({routeParams}) => {
     console.log('🚀 ~ file: index.js ~ line 123 ~ Routes ~ endLong', endLong);
 
     navigation.push('routePreview', {
-      drivingRoute: {latitude: endLat, longitude: endLong},
+      drivingRoute: {latitude: endLat, longitude: endLong, waypoints: waypoints},
     });
   };
 
@@ -43,6 +43,7 @@ const Routes = ({routeParams}) => {
         ],
       }}>
       {routeParams.routeCollections.map((item, index) => {
+      console.log('🚀 ~ Routes.js - item ~ ', item);
         return (
           <item-list header={item.attributes.title} key={item.id}>
             {item.relationships.routes.map((route, index) => {
