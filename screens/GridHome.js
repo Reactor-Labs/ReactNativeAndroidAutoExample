@@ -26,7 +26,7 @@ const GridHome = () => {
                   <row
                       key="1"
                       title="Other"
-                      text="example text"
+                      texts="example text"
                       icon="default_icon" // for R.drawable.default_icon
                       onPress={() => {
                         console.log('🚀 ~ GridHome.js - onPress ~ Other');

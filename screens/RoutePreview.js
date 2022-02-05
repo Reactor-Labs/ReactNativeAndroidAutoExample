@@ -16,6 +16,7 @@ const RoutePreview = ({routeParams}) => {
       isLoading={isLoading}
       title="Route Preview"
       headerAction="back"
+      notification={false}
       actionStrip={{
         actions: [
           {
