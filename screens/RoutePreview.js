@@ -12,7 +12,7 @@ const RoutePreview = ({routeParams}) => {
   }, []);
 
   return (
-    <route-preview-navigation-screen
+    <navigation-screen
       isLoading={isLoading}
       title="Route Preview"
       headerAction="back"
@@ -35,16 +35,12 @@ const RoutePreview = ({routeParams}) => {
         key={1}
         type="place"
         metadata={{
-          type: 'place',
-          latitude: routeParams.drivingRoute.latitude,
-          longitude: routeParams.drivingRoute.longitude,
-        },{
           type: 'waypoints',
           waypoints: routeParams.drivingRoute.waypoints,
         }
         }
       />
-    </route-preview-navigation-screen>
+    </navigation-screen>
   );
 };
 
