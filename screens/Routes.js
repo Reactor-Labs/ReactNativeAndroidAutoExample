@@ -12,7 +12,7 @@ const Routes = ({routeParams}) => {
 
   const navigateToRoute = route => {
     const {
-      attributes: {name, mileDistance, routeTime, directionsCount},
+      attributes: {end, name, mileDistance, routeTime, directionsCount},
       relationships: {waypoints},
     } = route;
 
@@ -22,7 +22,7 @@ const Routes = ({routeParams}) => {
     console.log('🚀 ~ file: index.js ~ line 123 ~ Routes ~ endLong', endLong);
 
     navigation.push('routePreview', {
-      drivingRoute: {latitude: endLat, longitude: endLong, waypoints: waypoints},
+      drivingRoute: {latitude: endLat, longitude: endLong, waypoints: waypoints, destination: end},
     });
   };
 

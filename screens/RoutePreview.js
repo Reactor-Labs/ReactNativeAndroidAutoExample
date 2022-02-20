@@ -37,6 +37,7 @@ const RoutePreview = ({routeParams}) => {
         metadata={{
           type: 'waypoints',
           waypoints: routeParams.drivingRoute.waypoints,
+          destination: routeParams.drivingRoute.destination,
         }
         }
       />
