@@ -6,8 +6,8 @@
     </style>
 
     <style name="CarAppTheme">
-        <item name="carColorPrimary">#000000</item>
-        <item name="carColorPrimaryDark">#000000</item>
+        <item name="carColorPrimary">#303030</item>
+        <item name="carColorPrimaryDark">#3D3D3D</item>
         <item name="carColorSecondary">#ef5350</item>
         <item name="carColorSecondaryDark">#b61827</item>
     </style>
