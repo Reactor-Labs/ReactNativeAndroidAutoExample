@@ -22,7 +22,9 @@ class ReplayNavigationObserver : MapboxNavigationObserver {
     }
 
     override fun onDetached(mapboxNavigation: MapboxNavigation) {
-        mapboxNavigation.unregisterRouteProgressObserver(replayProgressObserver)
-        mapboxNavigation.unregisterRoutesObserver(replayRoutesObserver)
+        if (ExampleCarInitializer.ENABLE_REPLAY) {
+            mapboxNavigation.unregisterRouteProgressObserver(replayProgressObserver)
+            mapboxNavigation.unregisterRoutesObserver(replayRoutesObserver)
+        }
     }
 }
