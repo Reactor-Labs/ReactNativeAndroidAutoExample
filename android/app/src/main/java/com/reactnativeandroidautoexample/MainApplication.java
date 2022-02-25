@@ -66,7 +66,6 @@ public class MainApplication extends Application implements ReactApplication {
 
     initializeSearchSDK();
 
-
     // Setup MapboxNavigation
     NavigationOptions.Builder navOptions = new NavigationOptions.Builder(getApplicationContext());
     navOptions.accessToken(getString(R.string.mapbox_access_token));
