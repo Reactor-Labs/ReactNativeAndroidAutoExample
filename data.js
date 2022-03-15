@@ -629,6 +629,7 @@ export const events = [
                   geoJSON: {
                     data: {
                       type: 'FeatureCollection',
+                      offroad: true,
                       features: [
                         {
                           type: 'Feature',
@@ -7830,6 +7831,7 @@ export const events = [
                   geoJSON: {
                     data: {
                       type: 'FeatureCollection',
+                      offroad: false,
                       features: [
                         {
                           type: 'Feature',
@@ -13605,6 +13607,7 @@ export const events = [
                   geoJSON: {
                     data: {
                       type: 'FeatureCollection',
+                      offroad: true,
                       features: [
                         {
                           type: 'Feature',

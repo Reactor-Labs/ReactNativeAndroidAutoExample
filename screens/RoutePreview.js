@@ -36,10 +36,11 @@ const RoutePreview = ({routeParams}) => {
         type="place"
         metadata={{
           type: 'waypoints',
+          type2: 'waypoints',
           waypoints: routeParams.drivingRoute.waypoints,
           destination: routeParams.drivingRoute.destination,
-        }
-        }
+          offroad: routeParams.drivingRoute.offroad,
+        }}
       />
     </navigation-screen>
   );
