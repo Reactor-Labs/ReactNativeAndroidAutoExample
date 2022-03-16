@@ -13,7 +13,7 @@ const Routes = ({routeParams}) => {
   const navigateToRoute = route => {
     const {
       attributes: {end, name, mileDistance, routeTime, directionsCount},
-      relationships: {waypoints},
+      relationships: {waypoints, geoJSON},
     } = route;
 
     const [startLong, startLat] = waypoints[0].data.geometry.coordinates;
@@ -22,7 +22,7 @@ const Routes = ({routeParams}) => {
     console.log('🚀 ~ file: index.js ~ line 123 ~ Routes ~ endLong', endLong);
 
     navigation.push('routePreview', {
-      drivingRoute: {latitude: endLat, longitude: endLong, waypoints: waypoints, destination: end},
+      drivingRoute: {latitude: endLat, longitude: endLong, waypoints: waypoints, destination: end, offroad: geoJSON.data.offroad},
     });
   };
 
@@ -50,6 +50,9 @@ const Routes = ({routeParams}) => {
               const mileDistance = route.attributes.mileDistance;
               const directionsCount = route.attributes.directionsCount;
               const routeTime = route.attributes.routeTime;
+              const offroad = route.relationships.geoJSON.data.offroad
+              console.log("offroad")
+              console.log(offroad)
               return (
                 <row
                   key={route.id}
